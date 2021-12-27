@@ -28,11 +28,11 @@ tar -xzf server64_8_3_20_1674.tar.gz
 ```bash
 ./setup-full-8.3.20.1674-x86_64.run --mode unattended --enable-components server,ws
 ```
-Копируем скрипт запуска srv1cv83 из каталога /opt/1cv8/x86_64/8.3.20.1674/ в файл /etc/init.d
+Копируем скрипт запуска **srv1cv83** из каталога **/opt/1cv8/x86_64/8.3.20.1674/** в файл **/etc/init.d**
 ```bash
 sudo cp /opt/1cv8/x86_64/8.3.20.1674/srv1cv83 /etc/init.d/
 ```
-Копируем конфигурационный файл сервера 1с srv1cv83.conf из каталога opt/1cv8/x86_64/8.3.20.1674/ в каталог /etc/default/srv1cv83 (в файл без расширения .conf)
+Копируем конфигурационный файл сервера 1с **srv1cv83.conf** из каталога **opt/1cv8/x86_64/8.3.20.1674/** в каталог **/etc/default/srv1cv83** (в файл без расширения .conf)
 ```bash
 sudo cp /opt/1cv8/x86_64/8.3.20.1674/srv1cv83.conf /etc/default/srv1cv83
 ```
@@ -40,4 +40,28 @@ sudo cp /opt/1cv8/x86_64/8.3.20.1674/srv1cv83.conf /etc/default/srv1cv83
 ```bash
 sudo update-rc.d srv1cv83 defaults
 ```
+Запускаем сервер 1С Предпрятия
+```bash
+sudo systemctl start srv1cv83
+```
 ### Дополнительно
+В текущем релизие имеется проблема: при установке сервера 1С устанваливаются элементы графической оболочки, котороые в дальнейшем не нужны.
+Удалим их.
+```bash
+sudo apt purge gnome-shell gnome-control-center gnome-keyring
+sudo apt autoremove
+```
+## Установка СУБД PostgreSQL Pro v.14
+Установка совершается из репозитория **Postgres Professional**. Предварительно репозиторий доавбляется в список доступных репоизториев сервера с помощью скаченного скрипта
+Скачиваем скрипт добавления репозитория для версии PostgresPro Standard 14 (https://repo.postgrespro.ru/pgpro-14/keys/apt-repo-add.sh)
+```bash
+curl -o apt-repo-add.sh https://repo.postgrespro.ru/pgpro-14/keys/apt-repo-add.sh
+```
+Запускаем скачанный скрипт с помощью оболочки sh
+```bash
+sudo sh apt-repo-add.sh
+```
+Установливаем **PostgresPro Standard 14** с помощью пакетного менеджера **apt**
+```bash
+sudo apt install postgrespro-std-14
+```
