@@ -3,24 +3,41 @@
 Установка производится из репозитория ubuntu с помощью пакетного менеджера **apt**
 
 ```bash
-#sudo apt install apache2
+sudo apt install apache2
 ```
 По завершении установки процесс запущен со стандартными настройками и добавлен а автозагрузку
 
 ## Установка серевера 1С версии 8.3.20.1647
 На сервере выполняем обновление данных о пакетах репозитория
 ```bash
-#sudo apt update
+sudo apt update
 ```
 Устанавливаем необходимые для работы 1С компоненты (шрифты, библиотеки)
 ```bash
-#sudo apt install ttf-mscorefonts-installer libodbc1
+sudo apt install ttf-mscorefonts-installer libodbc1
 ```
 Предварительно скаченный дистрибутив передаем на сервер в домашний каталог пользователя, под которым выполняем подключение через ssh (команда выполняется на машине, где находится дистрибутив)
-```bash
-#scp server64_8_3_20_1674.tar [username]@[servername]:/home/[homedir]
+```cmd
+scp server64_8_3_20_1674.tar [username]@[servername]:/home/[homedir]
 ```
 Распаковываем файлы архива в текущий каталог
 ```bash
-tar -xzf server64_8_3_20_1549.tar.gz
+tar -xzf server64_8_3_20_1674.tar.gz
 ```
+Запускаем установщик 1С Предприятия. Указываем компоненты: кластер серверов, модули расширения веб-сервера
+```bash
+./setup-full-8.3.20.1674-x86_64.run --mode unattended --enable-components server,ws
+```
+Копируем скрипт запуска srv1cv83 из каталога /opt/1cv8/x86_64/8.3.20.1674/ в файл /etc/init.d
+```bash
+sudo cp /opt/1cv8/x86_64/8.3.20.1674/srv1cv83 /etc/init.d/
+```
+Копируем конфигурационный файл сервера 1с srv1cv83.conf из каталога opt/1cv8/x86_64/8.3.20.1674/ в каталог /etc/default/srv1cv83 (в файл без расширения .conf)
+```bash
+sudo cp /opt/1cv8/x86_64/8.3.20.1674/srv1cv83.conf /etc/default/srv1cv83
+```
+Добавляем в автозагрузку скопированный скрипт
+```bash
+sudo update-rc.d srv1cv83 defaults
+```
+### Дополнительно
