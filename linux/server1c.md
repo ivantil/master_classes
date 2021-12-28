@@ -104,5 +104,20 @@ psql
 ```
 ALTER USER postgres WITH PASSWORD [new_password]
 ```
-
-
+### Публикация базы данных
+Публикация выполняется с помощью утилиты **webinst**, поставляемой с платформой 1С Предприятия.
+При запуске утилиты указываются параметры публикации:
++ `-publish` ключ, указывающий на необходимость создания публикации  
++ `-apache24` версия web-сервера  
++ `-wsdir` виртуальный каталог (в дальнейшем указывается в адресной строке после адреса сервера)
++ `-dir` физический каталог с расположением файлов публикации
++ `-connstr` строка соединения
++ `-confPath` полный путь к конфигурационному файлу Apache  
+Выполним команду
+```bash
+sudo /opt/1cv8/x86_64/8.3.20.1674/webinst -publish -apache24 -wsdir [path_name] -dir /www -connstr "Srvr=localhost;Ref=[base_name];" -confpath /etc/apache2/apache2.conf
+```
+Перезапускаем web-сервер
+```bash
+sudo systemctl restart apache2
+```
