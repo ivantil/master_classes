@@ -26,7 +26,7 @@ tar -xzf server64_8_3_20_1674.tar.gz
 ```
 Запускаем установщик 1С Предприятия. Указываем компоненты: кластер серверов, модули расширения веб-сервера
 ```bash
-./setup-full-8.3.20.1674-x86_64.run --mode unattended --enable-components server,ws
+sudo ./setup-full-8.3.20.1674-x86_64.run --mode unattended --enable-components server,ws
 ```
 Копируем скрипт запуска `srv1cv83` из каталога `/opt/1cv8/x86_64/8.3.20.1674/` в каталог `/etc/init.d`
 ```bash
