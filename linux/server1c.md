@@ -28,11 +28,11 @@ tar -xzf server64_8_3_20_1674.tar.gz
 ```bash
 ./setup-full-8.3.20.1674-x86_64.run --mode unattended --enable-components server,ws
 ```
-Копируем скрипт запуска **srv1cv83** из каталога **/opt/1cv8/x86_64/8.3.20.1674/** в файл **/etc/init.d**
+Копируем скрипт запуска `srv1cv83` из каталога `/opt/1cv8/x86_64/8.3.20.1674/** в каталог `/etc/init.d`
 ```bash
 sudo cp /opt/1cv8/x86_64/8.3.20.1674/srv1cv83 /etc/init.d/
 ```
-Копируем конфигурационный файл сервера 1с **srv1cv83.conf** из каталога **opt/1cv8/x86_64/8.3.20.1674/** в каталог **/etc/default/srv1cv83** (в файл без расширения .conf)
+Копируем конфигурационный файл сервера 1с `srv1cv83.conf` из каталога `opt/1cv8/x86_64/8.3.20.1674/` в каталог `/etc/default/srv1cv83` (в файл без расширения .conf)
 ```bash
 sudo cp /opt/1cv8/x86_64/8.3.20.1674/srv1cv83.conf /etc/default/srv1cv83
 ```
