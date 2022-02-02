@@ -45,3 +45,4 @@ docker -v
 ````bash
 sudo usermod -aG docker
 ````
+## Запуск контейнеров (docker run)
