@@ -27,3 +27,21 @@ echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] \
   https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list
 ````
+Выполняем обновление данных о пакетах репозитория
+````bash
+sudo apt update
+````
+Устанавливаем пакты docker
+````bash
+sudo apt install docker-ce docker-ce-cli containerd.io
+````
+После окончания установки проверим наличие пакеты выводм версии docker
+````bash
+docker -v
+````
+
+### Постустановочные процедуры
+Добавим пользователя, от именя которого будем работать в группу docker, чтобы исключить необходимость использования sudo
+````bash
+sudo usermod -aG docker
+````
