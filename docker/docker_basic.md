@@ -46,6 +46,7 @@ docker -v
 sudo usermod -aG docker
 ````
 ## Работа с контейнерами
+### Запуск контейнеров
 Запуск контейнеров произвоидся с помощью команды `docker run`, которая имеет общий синтаксисЖ
 ````bash
 docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]
@@ -65,3 +66,11 @@ docker run hello-world
 ````bash
 docker run -d -p 80:80 --name myname docker/getting-started
 ````
+### Просмотр списка контейнеров
+Пример: запуск контейнера из образа hello-world
+````bash
+docker ps
+````
+Основные опции
++ `-a` - просмотр всех контейнеров
++ `-q` - вывод только идентификаторов
