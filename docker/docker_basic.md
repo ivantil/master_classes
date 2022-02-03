@@ -89,6 +89,12 @@ docker stop [name | id]
 ````bash
 docker restart [name | id]
 ````
+### Удаление контейнеров
+Для удаления контейнеров используется команда `ps`.
+Опция `-f` используется для удаления запущенных контейнеров
+````bash
+docker rm [name | id]
+````
 ## Работа с образами
 
 Просмотр имеющихся в системе образов
@@ -127,4 +133,10 @@ ENTRYPOINT sh script.sh
 Выполняем сборку образа с именем my-script
 ````bash
 docker build -t my-script .
+````
+## Работа с томами
+
+Пример монтирования с использованием образа httpd
+````bash
+docker run -dit --name my-apache-app -p 8080:80 -v "$PWD":/usr/local/apache2/htdocs/ httpd:2.4
 ````
