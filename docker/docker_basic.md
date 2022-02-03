@@ -158,7 +158,10 @@ docker run -dit --name my-apache-app -p 8080:80 -v "$PWD":/usr/local/apache2/htd
 ````bash
 docker run -dit --name my-apache-app -p 8080:80 -v myvolume:/usr/local/apache2/htdocs/ httpd:2.4
 ````
-
+Просмотр списка созданных томов
+````bash
+docker volume ls
+````
 ## Дополнительно
 
 Созданние и запуск контейнера без докерфайла (Dockerfile из STDIN)
