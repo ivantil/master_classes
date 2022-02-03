@@ -91,6 +91,25 @@ docker restart [name | id]
 ````
 ## Работа с образами
 
+Просмотр имеющихся в системе образов
+````bash
+docker images
+````
 ### Dockerfile
+Пример сбокри образа на базе образа alpine, выполняющего созданный скрипт
+````Dockerfile
+# Указание базового образа
+FROM alpine
 
+# Создание рабочего каталога
+RUN mkdir /myapp
 
+# Копирование скрипта
+COPY ./script.sh /myapp/script.sh
+
+# Указание старотового рабочего каталога
+WORKDIR /myapp
+
+# Команда, выполняемая при старте контейнера
+ENTRYPOINT sh script.sh
+````
