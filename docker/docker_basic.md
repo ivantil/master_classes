@@ -97,6 +97,17 @@ docker images
 ````
 ### Dockerfile
 Пример сбокри образа на базе образа alpine, выполняющего созданный скрипт
+
+Создаем скрипт
+````bash
+echo "echo Starting backup..." > script.sh
+````
+
+Открываем текстовый редактор nano для создания Файла Dockerfile
+````bash
+nano Dockerfile 
+````
+Содержимое файла:
 ````Dockerfile
 # Указание базового образа
 FROM alpine
@@ -112,4 +123,8 @@ WORKDIR /myapp
 
 # Команда, выполняемая при старте контейнера
 ENTRYPOINT sh script.sh
+````
+Выполняем сборку образа с именем my-script
+````bash
+docker build -t my-script .
 ````
