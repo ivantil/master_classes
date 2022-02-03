@@ -95,6 +95,10 @@ docker restart [name | id]
 ````bash
 docker rm [name | id]
 ````
+Удаление всех контейнеров
+````bash
+docker rm $(docker ps -aq)
+````
 ## Работа с образами
 
 Просмотр имеющихся в системе образов
