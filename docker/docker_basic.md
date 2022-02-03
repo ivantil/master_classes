@@ -13,7 +13,7 @@ sudo apt upgrade
 ````
 Установка необходимых пакетов для работы с репозиторием по протоколу HTTPS
 ````bash
-sudo apt-get install ca-certificates curl gnupg lsb-release
+sudo apt install ca-certificates curl gnupg lsb-release
 ````
 
 ### Установка
