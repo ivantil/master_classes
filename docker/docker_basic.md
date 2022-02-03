@@ -144,3 +144,9 @@ docker build -t my-script .
 ````bash
 docker run -dit --name my-apache-app -p 8080:80 -v "$PWD":/usr/local/apache2/htdocs/ httpd:2.4
 ````
+## Дополнительно
+
+Созданние и запуск контейнера без докерфайла (Dockerfile из STDIN)
+````bash
+echo -e 'FROM busybox\nCMD echo "hello world"' | docker build -t minimal - && docker run minimal
+````
